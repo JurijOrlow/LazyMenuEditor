@@ -1,11 +1,11 @@
 import main
 
-class editItem(main.main.Gtk.Window):
-    fileEntry = main.main.Gtk.Entry()
-    nameEntry = main.main.Gtk.Entry()
-    typeEntry = main.main.Gtk.Entry()
-    execEntry = main.main.Gtk.Entry()
-    iconEntry = main.main.Gtk.Entry()
+class editItem(main.Gtk.Window):
+    fileEntry = main.Gtk.Entry()
+    nameEntry = main.Gtk.Entry()
+    typeEntry = main.Gtk.Entry()
+    execEntry = main.Gtk.Entry()
+    iconEntry = main.Gtk.Entry()
 
     def saveItem(self, widget, _location, _element):
         if _element == '.tmp':
@@ -43,15 +43,15 @@ class editItem(main.main.Gtk.Window):
         self.destroy()
 
     def __init__(self, element):
-        main.main.Gtk.Window.__init__(self, title="Lazy Menu Editor")
-        main.main.Gtk.Window.set_default_size(self, 200,150)
+        main.Gtk.Window.__init__(self, title="Lazy Menu Editor")
+        main.Gtk.Window.set_default_size(self, 200,150)
         main.Notify.init("Lazy Menu Editor")
-        header = main.main.Gtk.HeaderBar()
+        header = main.Gtk.HeaderBar()
         header.set_show_close_button(True)
         header.props.title = "Item Edit"
         self.set_titlebar(header)
 
-        box = main.main.Gtk.Box(orientation=main.main.Gtk.Orientation.HORIZONTAL)
+        box = main.Gtk.Box(orientation=main.Gtk.Orientation.HORIZONTAL)
 
         name = ""
         type = "Application"
@@ -84,63 +84,63 @@ class editItem(main.main.Gtk.Window):
             if len(icon) == 1: icon = icon[0].strip('Icon=')
             else: icon = ""
 
-        mainBox = main.main.Gtk.Box(orientation = main.main.Gtk.Orientation.VERTICAL)
+        mainBox = main.Gtk.Box(orientation = main.Gtk.Orientation.VERTICAL)
 
-        elementBox = main.main.Gtk.Box(orientation = main.main.Gtk.Orientation.HORIZONTAL)
-        label = main.main.Gtk.Label(label = "File name")
+        elementBox = main.Gtk.Box(orientation = main.Gtk.Orientation.HORIZONTAL)
+        label = main.Gtk.Label(label = "File name")
         #label.set_size_request(80, -1)
-        label.set_halign(main.main.Gtk.Align.START)
+        label.set_halign(main.Gtk.Align.START)
         self.fileEntry.set_text(element)
-        self.fileEntry.set_halign(main.main.Gtk.Align.END)
+        self.fileEntry.set_halign(main.Gtk.Align.END)
         elementBox.pack_start(label, True, True, 20)
         elementBox.pack_end(self.fileEntry, True, True, 0)
         mainBox.add(elementBox)
 
-        elementBox = main.main.Gtk.Box(orientation = main.main.Gtk.Orientation.HORIZONTAL)
-        label = main.main.Gtk.Label(label = "Name")
+        elementBox = main.Gtk.Box(orientation = main.Gtk.Orientation.HORIZONTAL)
+        label = main.Gtk.Label(label = "Name")
         #label.set_size_request(80, -1)
-        label.set_halign(main.main.Gtk.Align.START)
+        label.set_halign(main.Gtk.Align.START)
         self.nameEntry.set_text(name)
-        self.nameEntry.set_halign(main.main.Gtk.Align.END)
+        self.nameEntry.set_halign(main.Gtk.Align.END)
         elementBox.pack_start(label, True, True, 20)
         elementBox.pack_end(self.nameEntry, True, True, 0)
         mainBox.add(elementBox)
 
-        elementBox = main.main.Gtk.Box(orientation = main.main.Gtk.Orientation.HORIZONTAL)
-        label = main.main.Gtk.Label(label = "Type")
+        elementBox = main.Gtk.Box(orientation = main.Gtk.Orientation.HORIZONTAL)
+        label = main.Gtk.Label(label = "Type")
         #label.set_size_request(80, -1)
-        label.set_halign(main.main.Gtk.Align.START)
+        label.set_halign(main.Gtk.Align.START)
         self.typeEntry.set_text(type)
-        self.typeEntry.set_halign(main.main.Gtk.Align.END)
+        self.typeEntry.set_halign(main.Gtk.Align.END)
         elementBox.pack_start(label, True, True, 20)
         elementBox.pack_end(self.typeEntry, True, True, 0)
         mainBox.add(elementBox)
 
-        elementBox = main.main.Gtk.Box(orientation = main.main.Gtk.Orientation.HORIZONTAL)
-        label = main.main.Gtk.Label(label = "Exec")
+        elementBox = main.Gtk.Box(orientation = main.Gtk.Orientation.HORIZONTAL)
+        label = main.Gtk.Label(label = "Exec")
         #label.set_size_request(80, -1)
-        label.set_halign(main.main.Gtk.Align.START)
+        label.set_halign(main.Gtk.Align.START)
         self.execEntry.set_text(exe)
-        self.execEntry.set_halign(main.main.Gtk.Align.END)
+        self.execEntry.set_halign(main.Gtk.Align.END)
         elementBox.pack_start(label, True, True, 20)
         elementBox.pack_end(self.execEntry, True, True, 0)
         mainBox.add(elementBox)
 
-        elementBox = main.main.Gtk.Box(orientation = main.main.Gtk.Orientation.HORIZONTAL)
-        label = main.main.Gtk.Label(label = "Icon")
+        elementBox = main.Gtk.Box(orientation = main.Gtk.Orientation.HORIZONTAL)
+        label = main.Gtk.Label(label = "Icon")
         #label.set_size_request(80, -1)
-        label.set_halign(main.main.Gtk.Align.START)
+        label.set_halign(main.Gtk.Align.START)
         self.iconEntry.set_text(icon)
-        self.iconEntry.set_halign(main.main.Gtk.Align.END)
+        self.iconEntry.set_halign(main.Gtk.Align.END)
         elementBox.pack_start(label, True, True, 20)
         elementBox.pack_end(self.iconEntry, True, True, 0)
         mainBox.add(elementBox)
 
-        saveButton = main.main.Gtk.Button(label = "Save")
+        saveButton = main.Gtk.Button(label = "Save")
         saveButton.connect("clicked", self.saveItem, location, element)
         saveButton.set_size_request(20,20)
-        saveButton.set_halign(main.main.Gtk.Align.END)
-        box = main.main.Gtk.Box(orientation = main.main.Gtk.Orientation.HORIZONTAL)
+        saveButton.set_halign(main.Gtk.Align.END)
+        box = main.Gtk.Box(orientation = main.Gtk.Orientation.HORIZONTAL)
         box.pack_end(saveButton, True, True, 0)
 
         mainBox.add(box)

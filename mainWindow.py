@@ -1,4 +1,5 @@
 import main
+import editWindow
 
 class mainWindow(main.Gtk.Window):
     def handler(self, widget):
@@ -49,7 +50,7 @@ class mainWindow(main.Gtk.Window):
         self.handler(self)
 
     def editItem(self, widget, element=".tmp"):
-        editItemWindow = editItem(element)
+        editItemWindow = editWindow.editItem(element)
         editItemWindow.connect("destroy", self.handler)
         editItemWindow.show_all()
 
